@@ -3,7 +3,11 @@ package com.example.addresswallet1.API;
 import com.example.addresswallet1.Model.Users;
 import com.example.addresswallet1.Service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping("api/v1/users")
 @RestController
@@ -21,8 +25,8 @@ public class UsersController {
     }
 
     @PostMapping
-    public void createUser(@RequestBody Users user) {
-        usersService.createUser(user);
+    public int createUser(@RequestBody Users user) {
+        return usersService.createUser(user);
     }
 
     @PutMapping(path = "{userID}")

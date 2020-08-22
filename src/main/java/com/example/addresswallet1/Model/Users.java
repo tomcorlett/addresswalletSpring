@@ -1,19 +1,24 @@
 package com.example.addresswallet1.Model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Collection;
 
-public class Users implements UserDetails {
-    private final Integer userID;
+public class Users {
     private String username;
     private String password;
     private String forename;
     private String surname;
-    private boolean isEnabled;
+    private Integer userID;
 
-    public Users(Integer userID, String username, String forename, String surname) {
+    public Users(@JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname) {
+        this.username = username;
+        this.forename = forename;
+        this.surname = surname;
+        userID = null;
+    }
+
+  /*  public Users(@JsonProperty("userid") int userID, @JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname) {
         this.userID = userID;
         this.username = username;
         this.forename = forename;
@@ -26,44 +31,21 @@ public class Users implements UserDetails {
         this.password = password;
         this.forename = forename;
         this.surname = surname;
-    }
+    }*/
+
+   /* public Users(Integer userID) {this.userID = userID;}
 
     public Integer getUserID() {
         return userID;
     }
+*/
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 
     public String getUsername() {
         return username;
     }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    public String getPassword() { return password; }
-
-    public void setPassword(String password) { this.password = password; }
 
     public void setUsername(String username) {
         this.username = username;
@@ -84,4 +66,8 @@ public class Users implements UserDetails {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    public Integer getUserID() { return userID; }
+
+    public void setUserID(Integer userID) { this.userID = userID; }
 }

@@ -29,7 +29,7 @@ public class UserAccessService implements UsersDAO {
                 String username = rs.getString("username");
                 String forename = rs.getString("forename");
                 String surname = rs.getString("surname");
-                userToReturn = Optional.of(new Users(userID, username, forename, surname));
+                userToReturn = Optional.of(new Users(username, forename, surname));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -61,7 +61,7 @@ public class UserAccessService implements UsersDAO {
                 String forename = rs.getString("forename");
                 String surname = rs.getString("surname");
                 boolean isEnabled = rs.getBoolean("isEnabled");
-                userToReturn = Optional.of(new Users(userID, username, forename, surname));
+                userToReturn = Optional.of(new Users(username, forename, surname));
             }
         } catch (Exception e) {
             System.out.println(e);
