@@ -24,7 +24,7 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @GetMapping(path = "{userID}")
+    @GetMapping(path = "{userID}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Users getUser(@PathVariable("userID") int userID) {
         return usersService.getUserByID(userID).orElse(null); //TODO: why is this not throwing an error anymore? custom error message
     }

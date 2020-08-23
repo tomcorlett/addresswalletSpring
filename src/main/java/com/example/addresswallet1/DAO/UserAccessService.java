@@ -29,7 +29,8 @@ public class UserAccessService implements UsersDAO {
                 String username = rs.getString("username");
                 String forename = rs.getString("forename");
                 String surname = rs.getString("surname");
-                userToReturn = Optional.of(new Users(username, forename, surname));
+                String password = rs.getString("password");
+                userToReturn = Optional.of(new Users(username, forename, surname, password));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -61,7 +62,7 @@ public class UserAccessService implements UsersDAO {
                 String forename = rs.getString("forename");
                 String surname = rs.getString("surname");
                 boolean isEnabled = rs.getBoolean("isEnabled");
-                userToReturn = Optional.of(new Users(username, forename, surname));
+                userToReturn = Optional.of(new Users(username, forename, surname, password));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -79,6 +80,7 @@ public class UserAccessService implements UsersDAO {
         String username = user.getUsername();
         String forename = user.getForename();
         String surname = user.getSurname();
+        String password = user.getPassword();
 
         java.sql.Connection dbCon = null;
         PreparedStatement stmt = null;
@@ -88,11 +90,12 @@ public class UserAccessService implements UsersDAO {
         try {
             com.example.addresswallet1.Connection.Connection getConnection = new com.example.addresswallet1.Connection.Connection();
             dbCon = getConnection.getConnection();
-            stmt = dbCon.prepareStatement("insert into user (username, forename, surname) " +
-                    "values (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            stmt = dbCon.prepareStatement("insert into user (username, forename, surname, password) " +
+                    "values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, username);
             stmt.setString(2, forename);
             stmt.setString(3, surname);
+            stmt.setString(4, password);
             int success = stmt.executeUpdate();
             if (success == 1) {
                 rs = stmt.getGeneratedKeys();

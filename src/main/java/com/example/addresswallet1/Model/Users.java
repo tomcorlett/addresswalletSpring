@@ -13,11 +13,18 @@ public class Users implements UserDetails {
     private String surname;
     private Integer userID;
 
-    public Users(@JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname) {
+    /*public Users(@JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname) {
         this.username = username;
         this.forename = forename;
         this.surname = surname;
         userID = null;
+    }*/
+
+    public Users(@JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname, @JsonProperty("password") String password) {
+        this.username = username;
+        this.forename = forename;
+        this.surname = surname;
+        this.password = password;
     }
 
     @Override
@@ -25,7 +32,11 @@ public class Users implements UserDetails {
         return null;
     }
 
-    public String getPassword() { return password; }
+    public String getPassword() {
+        System.out.println("Now in Users object, tryna get that password");
+        System.out.println("password = " + password);
+        return this.password;
+    }
 
     public void setPassword(String password) { this.password = password; }
 
@@ -35,17 +46,17 @@ public class Users implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
