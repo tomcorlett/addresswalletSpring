@@ -6,6 +6,10 @@ target/
 
 ### Code from tutorial ###
 src/main/java/com/example/addresswallet1/API/UserController.java
+src/main/java/com/example/addresswallet1/DAO/FakeUserAccessService.java
+src/main/java/com/example/addresswallet1/DAO/UserDAO.java
+src/main/java/com/example/addresswallet1/Model/User.java
+src/main/java/com/example/addresswallet1/Service/UserService.java
 
 ### STS ###
 .apt_generated
