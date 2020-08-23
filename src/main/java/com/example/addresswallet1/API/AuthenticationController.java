@@ -30,6 +30,7 @@ public class AuthenticationController {
     @PostMapping
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         System.out.println("now in AuthenticationController.createAuthenticationRequest()");
+        System.out.println("username from request = " + authenticationRequest.getUsername());
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())

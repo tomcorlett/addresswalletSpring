@@ -1,10 +1,12 @@
 package com.example.addresswallet1.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class Users {
+public class Users implements UserDetails {
     private String username;
     private String password;
     private String forename;
@@ -18,33 +20,37 @@ public class Users {
         userID = null;
     }
 
-  /*  public Users(@JsonProperty("userid") int userID, @JsonProperty("username") String username, @JsonProperty("forename") String forename, @JsonProperty("surname") String surname) {
-        this.userID = userID;
-        this.username = username;
-        this.forename = forename;
-        this.surname = surname;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() { //may need to be an empty list returned
+        return null;
     }
 
-    public Users(Integer userID, String username, String password, String forename, String surname) {
-        this.userID = userID;
-        this.username = username;
-        this.password = password;
-        this.forename = forename;
-        this.surname = surname;
-    }*/
-
-   /* public Users(Integer userID) {this.userID = userID;}
-
-    public Integer getUserID() {
-        return userID;
-    }
-*/
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
 
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setUsername(String username) {
