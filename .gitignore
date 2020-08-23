@@ -4,6 +4,9 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+### Code from tutorial ###
+/src/main/java/com/example/addresswallet1/API/UserController.java
+
 ### STS ###
 .apt_generated
 .classpath
