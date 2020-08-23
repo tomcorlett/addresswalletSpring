@@ -14,6 +14,11 @@ import javax.validation.Valid;
 public class UsersController {
     private final UsersService usersService;
 
+    @RequestMapping({"/hello"})
+    public String hello() {
+        return "Hello World";
+    }
+
     @Autowired
     public UsersController(UsersService usersService) {
         this.usersService = usersService;
