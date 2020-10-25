@@ -3,8 +3,12 @@ package com.example.addresswallet1.API;
 import com.example.addresswallet1.Model.Users;
 import com.example.addresswallet1.Service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,11 +17,6 @@ import javax.validation.Valid;
 @RestController
 public class UsersController {
     private final UsersService usersService;
-
-    @RequestMapping({"/hello"})
-    public String hello() {
-        return "Hello World";
-    }
 
     @Autowired
     public UsersController(UsersService usersService) {
@@ -30,8 +29,21 @@ public class UsersController {
     }
 
     @PostMapping
-    public int createUser(@RequestBody Users user) {
-        return usersService.createUser(user);
+    public ResponseEntity<String> createUser(@RequestBody Users user) {
+        System.out.println("in UsersController.createUser()");
+        int responseCode = usersService.createUser(user);
+        //TODO: Should we use a factory here to generate responsecode?
+        //how could we make this generic?
+        HttpStatus httpStatus = HttpStatus.ACCEPTED;
+        switch (responseCode) {
+            case -1: //TODO: change this accordingly when the dao is updated to reflect database errors
+                httpStatus = HttpStatus.INTERNAL_SERVER_ERROR; //TODO: actually, I don't think we should be using this code, or http status codes in general. Custom codes implemented on the front end and back end might work better
+                break;
+            default:
+                httpStatus = HttpStatus.OK;
+                break;
+        }
+        return new ResponseEntity<String>(responseCode + "", httpStatus);
     }
 
     @PutMapping(path = "{userID}")

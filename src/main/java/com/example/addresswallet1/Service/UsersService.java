@@ -5,6 +5,7 @@ import com.example.addresswallet1.Model.User;
 import com.example.addresswallet1.Model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class UsersService {
 
     public int createUser(Users user) {
         return usersdao.createUser(user);
+
     }
 
     public int updateUserByID(int userID, Users user) {

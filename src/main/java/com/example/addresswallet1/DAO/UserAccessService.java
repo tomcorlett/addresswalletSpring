@@ -77,10 +77,12 @@ public class UserAccessService implements UsersDAO {
 
     @Override
     public int createUser(Users user) {
+        System.out.println("Now in UserAccessService.createUser()");
         String username = user.getUsername();
         String forename = user.getForename();
         String surname = user.getSurname();
         String password = user.getPassword();
+        System.out.println("username = " + username + ", forename = " + forename + ", surname = " + surname + ", password = " + password);
 
         java.sql.Connection dbCon = null;
         PreparedStatement stmt = null;
@@ -99,8 +101,10 @@ public class UserAccessService implements UsersDAO {
             int success = stmt.executeUpdate();
             if (success == 1) {
                 rs = stmt.getGeneratedKeys();
+                System.out.println("success");
                 if (rs.next()) {
                     userIDToReturn = rs.getInt(1);
+                    System.out.println("userIdToReturn = " + userIDToReturn);
                 }
             }
         } catch (Exception e) {

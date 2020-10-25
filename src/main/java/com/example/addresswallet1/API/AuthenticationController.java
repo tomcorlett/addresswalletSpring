@@ -10,10 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("api/v1/authenticate")
 @RestController
@@ -27,9 +24,10 @@ public class AuthenticationController {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        System.out.println("now in AuthenticationController.createAuthenticationRequest()");
+        System.out.println("now in AuthenticationController.createAuthenticationRequest() test if updated");
         System.out.println("username from request = " + authenticationRequest.getUsername());
         try {
             authenticationManager.authenticate(
