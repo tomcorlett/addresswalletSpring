@@ -1,7 +1,7 @@
 package com.example.addresswallet1.API;
 
 import com.example.addresswallet1.Model.Address;
-import com.example.addresswallet1.Model.User;
+import com.example.addresswallet1.Model.Users;
 import com.example.addresswallet1.Service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;

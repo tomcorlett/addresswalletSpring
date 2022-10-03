@@ -1,8 +1,6 @@
 package com.example.addresswallet1.DAO;
 
-import com.example.addresswallet1.Model.User;
 import com.example.addresswallet1.Model.Users;
-import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;

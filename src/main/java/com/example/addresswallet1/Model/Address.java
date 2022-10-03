@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Address {
     private Integer addressID;
     private int userID;
-    private User user;
     private AddressType addressType;
     private String addressDescription;
     private String addressNumber;

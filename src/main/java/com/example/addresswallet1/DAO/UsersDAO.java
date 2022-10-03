@@ -1,6 +1,5 @@
 package com.example.addresswallet1.DAO;
 
-import com.example.addresswallet1.Model.User;
 import com.example.addresswallet1.Model.Users;
 
 import java.util.Optional;

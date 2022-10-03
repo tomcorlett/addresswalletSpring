@@ -1,7 +1,6 @@
 package com.example.addresswallet1.Service;
 
 import com.example.addresswallet1.DAO.UsersDAO;
-import com.example.addresswallet1.Model.User;
 import com.example.addresswallet1.Model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

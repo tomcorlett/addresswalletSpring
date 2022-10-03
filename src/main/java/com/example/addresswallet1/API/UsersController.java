@@ -35,6 +35,8 @@ public class UsersController {
     public ResponseEntity<String> createUser(@RequestBody Users user) {
         System.out.println("in UsersController.createUser()");
         int responseCode = usersService.createUser(user);
+        //TODO:we need to check that the username does not already exist (email)
+
         //TODO: Should we use a factory here to generate responsecode?
         //how could we make this generic?
         //TODO: eventually, dao will return databaseError object, and we can just pass that in to getAPIErrorFromDatabaseError

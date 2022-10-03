@@ -29,9 +29,10 @@ public class Connection {
 
     public java.sql.Connection getConnection() {
         java.sql.Connection con = null;
+
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/addresswallet_users","root","password");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/addresswallet_users?serverTimezone=GMT","root","password");
         } catch(Exception e) {
             System.out.println(e);
         }
